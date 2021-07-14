@@ -1,0 +1,6 @@
+.article {
+  border-bottom: 0.05rem solid rgba(0, 0, 0, 0.082);
+  padding: 1rem 0;
+  cursor: pointer;
+  text-align: right;
+}

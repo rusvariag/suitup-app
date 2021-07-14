@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Articles from '../../components/Articles/Articles';
+import ArticlesList from '../../components/ArticlesList/ArticlesList';
 
 const ArticlesPage = () => {
   return (
     <div>
       <Container>
-        <Articles />
+        <ArticlesList />
       </Container>
     </div>
   );
