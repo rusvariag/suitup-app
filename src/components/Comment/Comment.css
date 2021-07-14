@@ -1,0 +1,10 @@
+.comment {
+  padding: 2rem;
+  border-bottom: 0.05rem solid rgba(0, 0, 0, 0.082);
+  direction: rtl;
+  min-height: 20vh;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}

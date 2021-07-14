@@ -4,12 +4,22 @@
 
 .comments-container {
   background-color: white;
-  margin-top: 2rem;
+  margin: 2rem 0;
   border-radius: 0.25rem;
   padding: 1rem;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.329);
-  height: 50vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+footer {
+  min-height: 100px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: flex-end;
   justify-content: space-between;
 }

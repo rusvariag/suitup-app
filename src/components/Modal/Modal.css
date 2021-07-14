@@ -1,0 +1,7 @@
+.modal-header {
+  justify-content: flex-end;
+}
+.dropbox-container {
+  display: flex;
+  justify-content: space-evenly;
+}
