@@ -5,4 +5,10 @@
   font-size: 5rem;
   text-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.342);
   text-align: right;
+  margin-bottom: 0;
+}
+
+.header-container {
+  flex-grow: 1;
+  vertical-align: bottom;
 }

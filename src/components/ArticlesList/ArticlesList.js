@@ -1,11 +1,18 @@
-import React, { useEffect, useContext } from 'react';
+// imports
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
+// components
 import Header from '../Header/Header';
 import Article from '../Article/Article';
-import { useHistory } from 'react-router-dom';
+
+// styles
 import './ArticlesList.css';
+
+// state managment
 import { CommentContext, ArticlesContext } from '../../App';
 
-// Import api services
+// api services
 import ApiService from '../../services/api-services';
 
 const Articles = () => {

@@ -1,16 +1,20 @@
+// imports
 import React, { useReducer, useEffect } from 'react';
-import Banner from './components/Banner/Banner';
 import { Switch, Route } from 'react-router-dom';
+
+// components
+import Banner from './components/Banner/Banner';
 import ArticlePage from './pages/ArticlePage/ArticlesPage';
 import CommentsPage from './pages/CommentsPage/CommentsPage';
 
-// Import api services
+// api services
 import ApiService from './services/api-services';
 
 export const CommentContext = React.createContext();
 export const ArticlesContext = React.createContext();
 
 const reducerComments = (state, action) => {
+  console.log('Reducer in work')
   switch (action.type) {
     case 'update':
       return action.value.comments || [];
@@ -108,10 +112,17 @@ function App() {
 
   useEffect(() => {
     const data = {};
-    api.getArticles().forEach(item => {
-      data[item.id] = item;
-    });
-    dispatchArticles({ type: 'update', value: data });
+    api
+      .getArticles()
+      .then(res => res.json())
+      .then(data => {
+        const tmp = {};
+        data.forEach(item => {
+          tmp[item.id] = item;
+        });
+        console.log(tmp);
+        dispatchArticles({ type: 'update', value: tmp });
+      });
   }, []);
 
   return (

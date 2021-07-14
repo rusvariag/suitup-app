@@ -5,3 +5,6 @@
   display: flex;
   justify-content: space-evenly;
 }
+.modal-button {
+  margin: 0 1rem;
+}

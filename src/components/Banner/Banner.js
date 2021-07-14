@@ -1,4 +1,7 @@
+// imports
 import React from 'react';
+
+// styles
 import './Banner.css';
 
 const Banner = () => {

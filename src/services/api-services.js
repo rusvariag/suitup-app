@@ -1,25 +1,8 @@
-// imports
-// import axios from 'axios';
-
 // global constants
 const BASE_PATH = 'http://64.225.73.88:9078/articles';
 
 export default class ApiService {
   getArticles() {
-    return [
-      {
-        id: 2,
-        title: 'אני מאמר',
-        content: 'אני תוכן',
-        comments: [],
-      },
-      {
-        id: 3,
-        title: 'אני מאמר 2',
-        content: 'אני תוכן 2',
-        comments: [],
-      },
-    ];
     return this.getRequest(`${BASE_PATH}`);
   }
 

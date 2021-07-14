@@ -1,4 +1,7 @@
+// imports
 import React from 'react';
+
+// styles
 import './Article.css';
 
 const Article = ({ article, handler }) => {

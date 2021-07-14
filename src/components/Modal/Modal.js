@@ -1,8 +1,9 @@
+// imports
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
+import { Link } from 'react-scroll';
+import { Modal, DropdownButton, Dropdown, Button } from 'react-bootstrap';
+
+// styles
 import './Modal.css';
 
 const ModalComponent = ({ ids = [] }) => {
@@ -13,7 +14,7 @@ const ModalComponent = ({ ids = [] }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="modal-button" onClick={handleShow}>
         קפיצה לתגובה מספר
       </Button>
 
@@ -22,12 +23,14 @@ const ModalComponent = ({ ids = [] }) => {
           <Modal.Title>בחר תגובה אליה תרצה לעבור</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div class="dropbox-container">
+          <div className="dropbox-container">
             <DropdownButton id="dropdown-item-button" title="מספרי תגובות">
               {ids.map(id => (
-                <Dropdown.Item key={id} as="button">
-                  {id}
-                </Dropdown.Item>
+                <Link key={id} to={id.toString()}>
+                  <Dropdown.Item as="button">
+                    <div>{id}</div>
+                  </Dropdown.Item>
+                </Link>
               ))}
             </DropdownButton>
           </div>

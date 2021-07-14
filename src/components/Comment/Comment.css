@@ -8,3 +8,16 @@
 .comment:last-child {
   border-bottom: none;
 }
+
+.comment-header {
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.responce-title {
+  font-size: 0.7rem;
+}
+.responce-container {
+  background-color: aliceblue;
+  padding: 0.5rem 2rem;
+}
