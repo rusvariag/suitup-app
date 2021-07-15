@@ -27,7 +27,7 @@ const ModalComponent = ({ ids = [] }) => {
             <DropdownButton id="dropdown-item-button" title="מספרי תגובות">
               {ids.map(id => (
                 <Link key={id} to={id.toString()}>
-                  <Dropdown.Item as="button">
+                  <Dropdown.Item as="button" onSelect={handleClose}>
                     <div>{id}</div>
                   </Dropdown.Item>
                 </Link>

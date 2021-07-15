@@ -1,7 +1,7 @@
 // imports
 import React from 'react';
 import { Link } from 'react-scroll';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 // components
@@ -32,16 +32,20 @@ const Comments = ({ comments }) => {
 
   return (
     <div className="comments">
-      <div className="flex-container">
-        <Link to={Math.max(...arrIds).toString()}>
-          <Button variant="dark">תגובה אחרונה</Button>
-        </Link>
-        <ModalComponent ids={arrIds} />
-        <Button variant="secondary" onClick={handlerBackToArticles}>
-          חזרה למאמרים
-        </Button>
-        <Header title="תגובות" />
-      </div>
+      <Row className="flex-container">
+        <Col xs={12} xl={5}>
+          <Link to={Math.max(...arrIds).toString()}>
+            <Button variant="dark">תגובה אחרונה</Button>
+          </Link>
+          <ModalComponent ids={arrIds} />
+          <Button variant="secondary" onClick={handlerBackToArticles}>
+            חזרה למאמרים
+          </Button>
+        </Col>
+        <Col xs={12} xl={7}>
+          <Header title="תגובות" />
+        </Col>
+      </Row>
       <div className="comments-container">
         <div>
           {comments.map(comment => (

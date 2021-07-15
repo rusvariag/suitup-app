@@ -9,7 +9,6 @@ const Comment = ({ comment }) => {
     return <div>{data}</div>;
   };
 
-  console.log(comment);
   return (
     <div className="comment" id={comment.id}>
       <div className="comment-header">
@@ -24,7 +23,7 @@ const Comment = ({ comment }) => {
         <>
           <div className="responce-container">
             <h6 className="responce-title">
-              {comment.response_to_comment.title}
+              כתב: {comment.response_to_comment.title}
             </h6>
             {comment.response_to_comment.title}
           </div>
