@@ -1,23 +1,12 @@
-.comment {
-  padding: 2rem;
-  border-bottom: 0.05rem solid rgba(0, 0, 0, 0.082);
-  direction: rtl;
-  min-height: 20vh;
-}
-
-.comment:last-child {
-  border-bottom: none;
-}
-
 .comment-header {
-  font-size: 0.7rem;
-  margin-bottom: 1rem;
+	font-size: 0.7rem;
+	margin-bottom: 1rem;
 }
 
 .responce-title {
-  font-size: 0.7rem;
+	font-size: 0.7rem;
 }
 .responce-container {
-  background-color: aliceblue;
-  padding: 0.5rem 2rem;
+	background-color: aliceblue;
+	padding: 0.5rem 2rem;
 }

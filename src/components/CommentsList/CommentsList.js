@@ -7,43 +7,49 @@ import { useHistory } from 'react-router-dom';
 // components
 import Header from '../Header/Header';
 import ModalComponent from '../Modal/Modal';
-import Comment from '../Comment/Comment';
+import Comments from '../Comments/Comments';
 
 // styles
 import './CommentsList.css';
 
-const Comments = ({ comments }) => {
+const CommentsList = ({ comments }) => {
   const arrIds = comments.map(comment => comment.id);
   const history = useHistory();
 
-  // comments.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0));
+  const hierarchy = arr => {
+    const roots = [];
+    const children = {};
 
-  // comments.forEach(comment => {
-  //   const resp = comment.response_to_comment_id;
-  //   if (resp) {
-  //     const respComment = comments.find(el => el.id === resp);
-  //     comment.response_to_comment = respComment;
-  //   }
-  // });
-
-  const sortFunction = () => {
-    const tmp = [];
-    for (let i = 0; i < comments.length; i++) {
-      if (comments[i].response_to_comment_id === null) {
-        tmp.push(comments[i])
-      }   else {
-        for (let j = 0; j < tmp.length; j++) {
-          if (tmp[j].id === comments[i].response_to_comment_id) {
-            tmp.splice(j + 1,0,comments[i]);
-            break;
-          }
-        }
+    // find the top level nodes and hash the children based on parent
+    for (let i = 0; i < arr.length; ++i) {
+      var p = arr[i].response_to_comment_id;
+      if (!p) {
+        roots.push({ value: arr[i], el:  'root' });
+      } else {
+        const target = children[p] || (children[p] = []);
+        target.push({ value: arr[i] });
       }
     }
-    return tmp;
-  }
 
-  comments = sortFunction();
+    // function to recursively build the tree
+    const findChildren = parent => {
+      if (children[parent.value.id]) {
+        parent.children = children[parent.value.id];
+        for (let i = 0; i < parent.children.length; ++i) {
+          findChildren(parent.children[i]);
+        }
+      }
+    };
+
+    // enumerate through to handle the case where there are multiple roots
+    for (let i = 0; i < roots.length; ++i) {
+      findChildren(roots[i]);
+    }
+
+    return roots;
+  };
+
+  const tmp = hierarchy(comments);
 
   const handlerBackToArticles = () => {
     history.push('/');
@@ -66,11 +72,7 @@ const Comments = ({ comments }) => {
         </Col>
       </Row>
       <div className="comments-container">
-        <div>
-          {comments.map(comment => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
-        </div>
+        <Comments comments={tmp} />
       </div>
       <Link to={Math.min(...arrIds).toString()}>
         <Button variant="dark">תגובה ראשונה</Button>
@@ -80,4 +82,4 @@ const Comments = ({ comments }) => {
   );
 };
 
-export default Comments;
+export default CommentsList;
