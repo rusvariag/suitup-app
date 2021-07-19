@@ -16,15 +16,34 @@ const Comments = ({ comments }) => {
   const arrIds = comments.map(comment => comment.id);
   const history = useHistory();
 
-  comments.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0));
+  // comments.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0));
 
-  comments.forEach(comment => {
-    const resp = comment.response_to_comment_id;
-    if (resp) {
-      const respComment = comments.find(el => el.id === resp);
-      comment.response_to_comment = respComment;
+  // comments.forEach(comment => {
+  //   const resp = comment.response_to_comment_id;
+  //   if (resp) {
+  //     const respComment = comments.find(el => el.id === resp);
+  //     comment.response_to_comment = respComment;
+  //   }
+  // });
+
+  const sortFunction = () => {
+    const tmp = [];
+    for (let i = 0; i < comments.length; i++) {
+      if (comments[i].response_to_comment_id === null) {
+        tmp.push(comments[i])
+      }   else {
+        for (let j = 0; j < tmp.length; j++) {
+          if (tmp[j].id === comments[i].response_to_comment_id) {
+            tmp.splice(j + 1,0,comments[i]);
+            break;
+          }
+        }
+      }
     }
-  });
+    return tmp;
+  }
+
+  comments = sortFunction();
 
   const handlerBackToArticles = () => {
     history.push('/');
